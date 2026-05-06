@@ -254,7 +254,7 @@ class ExchangeAgent(FinancialAgent):
         super().kernel_terminating()
         # print(self.order_books['ABM'].book_log2)
         # If the oracle supports writing the fundamental value series for its
-        bid_volume, ask_volume = self.order_books["ABM"].get_transacted_volume(
+        bid_volume, ask_volume = self.order_books[self.symbols[0]].get_transacted_volume(
             self.current_time - self.mkt_open
         )
         self.total_exchanged_volume = bid_volume + ask_volume

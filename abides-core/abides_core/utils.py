@@ -131,7 +131,7 @@ def parse_logs_df(end_state: dict) -> pd.DataFrame:
         messages = []
         for m in agent.log:
             m = {
-                "EventTime": m[0] if isinstance(m[0], (int, np.int64)) else 0,
+                "EventTime": int(m[0]) if m[0] else 0,
                 "EventType": m[1],
                 "Event": m[2],
             }
