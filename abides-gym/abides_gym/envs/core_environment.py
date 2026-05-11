@@ -56,7 +56,7 @@ class AbidesGymCoreEnv(gym.Env, ABC):
         """
 
         # get seed to initialize random states for ABIDES
-        seed = self.np_random.randint(low=0, high=2 ** 32, dtype="uint64")
+        seed = int(self.np_random.integers(low=0, high=2 ** 31) if hasattr(self.np_random, 'integers') else self.np_random.randint(low=0, high=2 ** 31))
         # instanciate back ground config state
         background_config_args = self.background_config_pair[1]
         background_config_args.update(
